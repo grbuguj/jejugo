@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>제주 가족여행 — 용순·현주·재웅·원준 ❤️</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+  :root {
+    --bg: #F6F2EA;
+    --surface: #FFFFFF;
+    --surface2: #FAF7F1;
+    --text-primary: #1F1B16;
+    --text-secondary: #6B6258;
+    --text-tertiary: #A89F93;
+    --border: #ECE6DC;
+    --coral: #F2683C;
+    --coral-light: #FCEDE5;
+    --teal: #138E86;
+    --teal-light: #E1F2F0;
+    --green: #5A9E3F;
+    --green-light: #ECF5E6;
+    --gold: #E0982E;
+    --gold-light: #FBF1DD;
+    --purple: #8474CF;
+    --purple-light: #EFEBFA;
+    --blue: #4187CC;
+    --blue-light: #E8F1FA;
+    --red: #DE5048;
+    --red-light: #FBEAE8;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 22px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, #F2683C 0%, #E0982E 100%);
+    padding: 22px 20px 0;
+    position: sticky; top: 0; z-index: 200;
+    box-shadow: 0 2px 12px rgba(242,104,60,0.15);
+  }
+  .header-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .header-title {
+    font-size: 20px; font-weight: 900; color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .header-sub { font-size: 13px; color: rgba(255,255,255,0.9); margin-top: 3px; font-weight: 500; }
+  .flight-chip {
+    background: rgba(255,255,255,0.25); color: #fff;
+    font-size: 12px; font-weight: 700;
+    padding: 6px 12px; border-radius: 20px;
+    letter-spacing: -0.1px; backdrop-filter: blur(4px);
+  }
+
+  /* ── TAB BAR ── */
+  .tabs {
+    display: flex; gap: 0;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0;
+    padding: 11px 18px 13px;
+    background: none; border: none;
+    font-family: inherit; font-size: 14px; font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tab.active {
+    color: #fff;
+    border-bottom-color: #fff;
+    font-weight: 900;
+  }
+
+  /* ── PANEL ── */
+  .panel { display: none; padding: 16px 16px 110px; }
+  .panel.active { display: block; }
+
+  /* ── DAY HERO ── */
+  .day-hero {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(31,27,22,0.04);
+  }
+  .day-hero-row { display: flex; align-items: center; justify-content: space-between; }
+  .day-hero-label {
+    font-size: 12px; font-weight: 900;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+  .day-hero-title {
+    font-size: 19px; font-weight: 900;
+    color: var(--text-primary); letter-spacing: -0.4px;
+    margin-bottom: 5px;
+  }
+  .day-hero-sub { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
+  .weather-chip {
+    font-size: 12px; font-weight: 700;
+    padding: 6px 11px; border-radius: 20px;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .w-rain { background: var(--blue-light); color: var(--blue); }
+  .w-sun  { background: var(--gold-light); color: var(--gold); }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 12px; font-weight: 900;
+    color: var(--text-tertiary);
+    letter-spacing: 0.06em;
+    padding: 0 4px; margin: 18px 0 9px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-row { display: flex; gap: 12px; }
+  .tl-axis {
+    display: flex; flex-direction: column; align-items: center;
+    min-width: 44px; flex-shrink: 0; padding-top: 15px;
+  }
+  .tl-time {
+    font-size: 11px; font-weight: 900;
+    color: var(--text-secondary);
+    white-space: nowrap; line-height: 1;
+  }
+  .tl-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    margin: 6px 0 0; flex-shrink: 0;
+  }
+  .tl-line {
+    width: 2px; flex: 1; min-height: 12px;
+    background: var(--border); margin-top: 4px;
+  }
+  .tl-body { flex: 1; padding-bottom: 10px; }
+
+  /* ── CARD BASE ── */
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+  }
+  .card-name {
+    font-size: 16px; font-weight: 700;
+    color: var(--text-primary); margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .card-desc {
+    font-size: 13.5px; color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .card-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 10px; gap: 8px; flex-wrap: wrap;
+  }
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px; font-weight: 700;
+    padding: 3px 9px; border-radius: 20px;
+    letter-spacing: 0.01em;
+  }
+  .tag-coral  { background: var(--coral-light);  color: var(--coral); }
+  .tag-teal   { background: var(--teal-light);   color: var(--teal); }
+  .tag-green  { background: var(--green-light);  color: var(--green); }
+  .tag-red    { background: var(--red-light);    color: var(--red); }
+  .tag-gray   { background: var(--border);       color: var(--text-secondary); }
+  .tag-gold   { background: var(--gold-light);   color: var(--gold); }
+  .tag-purple { background: var(--purple-light); color: var(--purple); }
+  .tag-blue   { background: var(--blue-light);   color: var(--blue); }
+
+  /* 액션 버튼 (지도 / 전화) */
+  .btn-row { display: flex; gap: 6px; flex-shrink: 0; }
+  .act-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 700;
+    padding: 7px 12px; border-radius: 20px;
+    text-decoration: none; flex-shrink: 0;
+    transition: opacity 0.15s;
+  }
+  .act-btn:active { opacity: 0.65; }
+  .act-btn svg { width: 12px; height: 12px; }
+  .btn-map  { background: var(--teal-light); color: var(--teal); }
+  .btn-call { background: var(--green-light); color: var(--green); }
+
+  /* ── MEAL CARD ── */
+  .meal-card {
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+  }
+  .meal-card.morning { background: var(--gold-light); }
+  .meal-card.snack   { background: var(--surface); border: 1px solid var(--border); }
+  .meal-badge {
+    font-size: 11px; font-weight: 900;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .meal-badge.morning { color: var(--gold); }
+  .meal-badge.lunch   { color: var(--green); }
+  .meal-badge.snack   { color: var(--text-tertiary); }
+  .meal-badge.dinner  { color: var(--coral); }
+  .meal-badge.cafe    { color: var(--teal); }
+  .meal-name { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; letter-spacing: -0.3px; }
+  .meal-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* 택1 옵션 (점심/저녁/카페) */
+  .pick-wrap {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+  }
+  .pick-label-row { padding: 13px 16px 2px; }
+  .pick-options { padding: 8px 11px 11px; display: flex; flex-direction: column; gap: 7px; }
+  .pick-opt {
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: 11px 13px;
+  }
+  .pick-opt-top { display: flex; gap: 10px; align-items: flex-start; }
+  .opt-badge {
+    font-size: 11px; font-weight: 900;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px; color: #fff;
+  }
+  .opt-1 { background: var(--green); }
+  .opt-2 { background: var(--coral); }
+  .opt-3 { background: var(--purple); }
+  .pick-opt .meal-name { font-size: 14.5px; }
+  .pick-opt .meal-desc { font-size: 12.5px; }
+
+  /* ── INFO CARD ── */
+  .info-card {
+    background: var(--surface); border-radius: var(--radius-md);
+    padding: 15px 17px; margin-bottom: 9px;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+  }
+  .info-card.teal  { background: var(--teal-light); }
+  .info-card.coral { background: var(--coral-light); }
+  .info-card.red   { background: var(--red-light); }
+  .info-card.green { background: var(--green-light); }
+  .info-card.gold  { background: var(--gold-light); }
+  .info-title { font-size: 14.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; letter-spacing: -0.3px; }
+  .info-body  { font-size: 13.5px; color: var(--text-secondary); line-height: 1.8; }
+
+  /* ── CHECKLIST ── */
+  .check-list { display: flex; flex-direction: column; gap: 7px; }
+  .check-item {
+    background: var(--surface); border-radius: var(--radius-md);
+    padding: 14px 16px;
+    display: flex; align-items: flex-start; gap: 13px;
+    cursor: pointer; transition: opacity 0.15s;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+  }
+  .check-item.done { opacity: 0.42; }
+  .check-circle {
+    width: 24px; height: 24px; border-radius: 50%;
+    border: 2px solid var(--border); flex-shrink: 0; margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .check-item.done .check-circle {
+    background: var(--green); border-color: var(--green);
+  }
+  .check-item.done .check-circle::after {
+    content: ''; display: block;
+    width: 6px; height: 11px;
+    border: 2px solid #fff; border-top: none; border-left: none;
+    transform: rotate(45deg) translate(-1px, -1px);
+  }
+  .check-text { font-size: 14.5px; font-weight: 700; color: var(--text-primary); }
+  .check-sub  { font-size: 12px; color: var(--text-tertiary); margin-top: 3px; }
+
+  /* ── FLIGHT INFO ── */
+  .flight-card {
+    background: var(--surface); border-radius: var(--radius-lg);
+    padding: 16px; display: flex; align-items: center; gap: 13px;
+    margin-bottom: 9px;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+  }
+  .flight-icon {
+    width: 42px; height: 42px; border-radius: var(--radius-sm);
+    background: var(--coral-light); display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .flight-main { flex: 1; }
+  .flight-route { font-size: 16px; font-weight: 700; letter-spacing: -0.3px; color: var(--text-primary); }
+  .flight-detail { font-size: 12px; color: var(--text-tertiary); margin-top: 3px; }
+  .flight-pnr {
+    background: var(--border); border-radius: var(--radius-sm);
+    padding: 5px 9px; font-size: 12.5px; font-weight: 900;
+    color: var(--text-primary); letter-spacing: 0.05em;
+  }
+
+  /* ── BOTTOM NAV ── */
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 480px;
+    background: var(--surface); border-top: 1px solid var(--border);
+    display: flex; padding: 9px 0 18px;
+    box-shadow: 0 -2px 12px rgba(31,27,22,0.05);
+  }
+  .nav-item {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; gap: 4px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px 0; font-family: inherit;
+    transition: opacity 0.15s;
+  }
+  .nav-icon { font-size: 23px; line-height: 1; }
+  .nav-label {
+    font-size: 10px; font-weight: 700;
+    color: var(--text-tertiary); letter-spacing: 0.03em;
+  }
+  .nav-item.active .nav-label { color: var(--coral); }
+
+  /* ── MAP ROUTE ── */
+  .map-route-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 15px 15px 13px;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+  }
+  .map-stops {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 13px;
+  }
+  .map-stop {
+    display: flex; align-items: center; gap: 5px;
+    background: var(--bg); border-radius: 20px;
+    padding: 4px 11px 4px 4px;
+  }
+  .stop-num {
+    width: 21px; height: 21px; border-radius: 50%;
+    color: #fff; font-size: 11px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .stop-name { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+  .map-route-btn {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    width: 100%; padding: 14px;
+    background: var(--teal); color: #fff;
+    border-radius: var(--radius-md);
+    font-size: 14px; font-weight: 700;
+    text-decoration: none; letter-spacing: -0.2px;
+    transition: opacity 0.15s;
+  }
+  .map-route-btn:active { opacity: 0.8; }
+
+  /* ── IMAGES ── */
+  .img-strip {
+    display: flex; gap: 5px;
+    margin-top: 10px; overflow: hidden;
+    border-radius: var(--radius-sm);
+  }
+  .img-strip-item {
+    flex: 1; aspect-ratio: 1/1;
+    border-radius: var(--radius-sm);
+    overflow: hidden; background: var(--border);
+    position: relative;
+  }
+  .img-strip-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: opacity 0.2s;
+  }
+  .img-skeleton {
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, var(--border) 25%, var(--bg) 50%, var(--border) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+  }
+  .pick-opt .img-strip { margin-top: 8px; }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* NOTICE */
+  .notice {
+    border-radius: var(--radius-md);
+    padding: 13px 15px; margin-bottom: 13px;
+    display: flex; gap: 9px; align-items: flex-start;
+  }
+  .notice.warm { background: var(--coral-light); }
+  .notice.rain { background: var(--blue-light); }
+  .notice-icon { font-size: 17px; flex-shrink: 0; }
+  .notice-text { font-size: 13px; color: var(--text-primary); line-height: 1.65; font-weight: 500; }
+
+  /* 가족 인사 배너 */
+  .family-banner {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(31,27,22,0.04);
+    text-align: center;
+  }
+  .family-banner .fb-emoji { font-size: 26px; }
+  .family-banner .fb-text { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-top: 6px; font-weight: 500; }
+  .family-banner .fb-names { font-weight: 900; color: var(--coral); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">제주 가족여행 🍊</div>
+      <div class="header-sub">2026.7.1–7.3 · 용순·현주·재웅·원준</div>
+    </div>
+    <span class="flight-chip">2박 3일</span>
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="go('d1')">7/1 수</button>
+    <button class="tab" onclick="go('d2')">7/2 목</button>
+    <button class="tab" onclick="go('d3')">7/3 금</button>
+    <button class="tab" onclick="go('info')">정보</button>
+  </div>
+</div>
+
+<!-- ════════════ DAY 1 ════════════ -->
+<div id="d1" class="panel active">
+  <div class="day-hero">
+    <div class="day-hero-row">
+      <div>
+        <div class="day-hero-label" style="color:var(--blue)">DAY 1 · 7월 1일 수</div>
+        <div class="day-hero-title">제주 도착, 안덕으로</div>
+        <div class="day-hero-sub">공항 → 점심 → 동문시장 → 카페 → 서커스 → 숙소</div>
+      </div>
+      <span class="weather-chip w-rain">☔ 비</span>
+    </div>
+  </div>
+
+  <div class="notice rain">
+    <span class="notice-icon">☂️</span>
+    <div class="notice-text">오늘은 비 예보! 다행히 시장·서커스·카페 다 실내라 걱정 없어요. 우산만 챙기세요.</div>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 도착 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">11:45</span><div class="tl-dot" style="background:var(--coral)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card" data-query="제주국제공항">
+          <div class="card-name">제주공항 도착 ✈️</div>
+          <div class="card-desc">진에어 LJ507 · 김포 10:30 → 제주 11:45 · 4명</div>
+          <div class="card-bottom"><div class="tags"><span class="tag tag-blue">예약 DCJ2FF</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 렌터카 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">12:00</span><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card">
+          <div class="card-name">렌터카 픽업 🚗</div>
+          <div class="card-desc">제주공항렌트카 본사. 셔틀 타고 이동, 차 받으면 12:30쯤. 엄마가 운전!</div>
+          <div class="card-bottom"><div class="tags"><span class="tag tag-gray">~12:30 출발</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 점심 택1 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">13:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="pick-wrap">
+          <div class="pick-label-row"><div class="meal-badge lunch">🍚 점심 — 골라요!</div></div>
+          <div class="pick-options">
+            <div class="pick-opt" data-query="제주 노도고등어회 순살갈치조림">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-1">1</span>
+                <div style="flex:1">
+                  <div class="meal-name">노도고등어회·순살갈치조림</div>
+                  <div class="meal-desc">갈치조림·고등어회. 공항 5분, 리뷰 2,600+개. 첫끼로 최강 ⭐</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EB%85%B8%EB%8F%84%EA%B3%A0%EB%93%B1%EC%96%B4%ED%9A%8C%20%EC%88%9C%EC%82%B4%EA%B0%88%EC%B9%98%EC%A1%B0%EB%A6%BC" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 착한제주고등어 동문시장">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-2">2</span>
+                <div style="flex:1">
+                  <div class="meal-name">착한제주고등어</div>
+                  <div class="meal-desc">고등어조림·구이, 가성비. 동문시장 근처라 장보기 동선 굿</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%B0%A9%ED%95%9C%EC%A0%9C%EC%A3%BC%EA%B3%A0%EB%93%B1%EC%96%B4" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 굥서체 갈치">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-3">3</span>
+                <div style="flex:1">
+                  <div class="meal-name">굥서체</div>
+                  <div class="meal-desc">갈치 3종(조림·구이·국). 탑동, 가족 단위 굿</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%A0%9C%EC%A3%BC%20%EA%B5%A5%EC%84%9C%EC%B2%B4" target="_blank">지도</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 동문시장 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">14:00</span><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card" data-query="제주 동문시장">
+          <div class="card-name">동문시장 장보기 🛒</div>
+          <div class="card-desc">할머니 요리 재료 + 먹거리 구경. 회·딱새우·오메기떡도 픽업!</div>
+          <div class="card-bottom">
+            <div class="tags"><span class="tag tag-gold">08~21시</span></div>
+            <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%A0%9C%EC%A3%BC%20%EB%8F%99%EB%AC%B8%EC%8B%9C%EC%9E%A5" target="_blank">지도</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 남하 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">15:00</span><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card">
+          <div class="card-name">평화로 타고 안덕으로 🚗</div>
+          <div class="card-desc">제주시 → 안덕 약 50~60분. 중간에 휴게소 한 번 쉬어가기</div>
+          <div class="card-bottom"><div class="tags"><span class="tag tag-gray">약 1시간</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 카페 택1 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">16:00</span><div class="tl-dot" style="background:var(--teal)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="pick-wrap">
+          <div class="pick-label-row"><div class="meal-badge cafe">☕ 카페 — 서커스 전 차 한잔, 골라요!</div></div>
+          <div class="pick-options">
+            <div class="pick-opt" data-query="제주 플라워앤플라워스 카페 동광리">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-1">1</span>
+                <div style="flex:1">
+                  <div class="meal-name">플라워앤플라워스</div>
+                  <div class="meal-desc">정원+뷰+베이커리. 서커스 5분 ⭐</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%ED%94%8C%EB%9D%BC%EC%9B%8C%EC%95%A4%ED%94%8C%EB%9D%BC%EC%9B%8C%EC%8A%A4%20%EC%A0%9C%EC%A3%BC" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 무로이 카페 안덕">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-2">2</span>
+                <div style="flex:1">
+                  <div class="meal-name">Muroi (무로이)</div>
+                  <div class="meal-desc">올블랙 모던 + 온실 정원, 크루아상 맛집</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EB%AC%B4%EB%A1%9C%EC%9D%B4%20%EC%A0%9C%EC%A3%BC%20%EC%95%88%EB%8D%95" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 위에 wiee 카페 안덕">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-3">3</span>
+                <div style="flex:1">
+                  <div class="meal-name">wiee (위에)</div>
+                  <div class="meal-desc">인기 브런치 카페, 뷰 좋음. 서커스 3분</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=wiee%20%EC%A0%9C%EC%A3%BC%20%EC%95%88%EB%8D%95" target="_blank">지도</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 서커스 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">17:00</span><div class="tl-dot" style="background:var(--purple)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card" style="border-left:4px solid var(--purple)" data-query="제주 아트서커스">
+          <div class="card-name">제주 아트서커스 🎪</div>
+          <div class="card-desc">예매 완료! 막공 17:00, 60분. 할머니 앉아서 편하게 관람 굿</div>
+          <div class="card-bottom">
+            <div class="tags"><span class="tag tag-purple">예매완료 ✓</span></div>
+            <div class="btn-row">
+              <a class="act-btn btn-call" href="tel:+82647944444">전화</a>
+              <a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%A0%9C%EC%A3%BC%20%EC%95%84%ED%8A%B8%EC%84%9C%EC%BB%A4%EC%8A%A4" target="_blank">지도</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 체크인 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">18:30</span><div class="tl-dot" style="background:var(--coral)"></div></div>
+      <div class="tl-body">
+        <div class="card" data-query="제주 오션브릭 풀빌라 산방산">
+          <div class="card-name">오션브릭 풀빌라 체크인 🏡</div>
+          <div class="card-desc">서커스서 15분. 할머니표 집밥 + 풀빌라에서 도란도란 쉬기 ❤️</div>
+          <div class="card-bottom">
+            <div class="tags"><span class="tag tag-coral">우리 숙소</span></div>
+            <div class="btn-row">
+              <a class="act-btn btn-call" href="tel:+82647924100">전화</a>
+              <a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%98%A4%EC%85%98%EB%B8%8C%EB%A6%AD%20%ED%92%80%EB%B9%8C%EB%9D%BC" target="_blank">지도</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DAY 1 지도 -->
+  <div class="section-label">오늘의 경로</div>
+  <div class="map-route-card">
+    <div class="map-stops">
+      <div class="map-stop"><span class="stop-num" style="background:var(--blue)">1</span><span class="stop-name">공항</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--blue)">2</span><span class="stop-name">동문시장</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--blue)">3</span><span class="stop-name">서커스 카페</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--blue)">4</span><span class="stop-name">아트서커스</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--blue)">5</span><span class="stop-name">숙소</span></div>
+    </div>
+    <a class="map-route-btn" href="https://www.google.com/maps/dir/%EC%A0%9C%EC%A3%BC%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD/%EC%A0%9C%EC%A3%BC%20%EB%8F%99%EB%AC%B8%EC%8B%9C%EC%9E%A5/%ED%94%8C%EB%9D%BC%EC%9B%8C%EC%95%A4%ED%94%8C%EB%9D%BC%EC%9B%8C%EC%8A%A4%20%EC%A0%9C%EC%A3%BC/%EC%A0%9C%EC%A3%BC%20%EC%95%84%ED%8A%B8%EC%84%9C%EC%BB%A4%EC%8A%A4/%EC%98%A4%EC%85%98%EB%B8%8C%EB%A6%AD%20%ED%92%80%EB%B9%8C%EB%9D%BC" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      구글맵에서 전체 경로 보기
+    </a>
+  </div>
+</div>
+
+<!-- ════════════ DAY 2 ════════════ -->
+<div id="d2" class="panel">
+  <div class="day-hero">
+    <div class="day-hero-row">
+      <div>
+        <div class="day-hero-label" style="color:var(--green)">DAY 2 · 7월 2일 목</div>
+        <div class="day-hero-title">안덕 꽃·차·온천</div>
+        <div class="day-hero-sub">수국 → 점심 → 오설록 → 해변 → 저녁 → 야간온천</div>
+      </div>
+      <span class="weather-chip w-sun">⛅ 흐림·맑음</span>
+    </div>
+  </div>
+
+  <div class="notice warm">
+    <span class="notice-icon">🌺</span>
+    <div class="notice-text">사흘 중 제일 맑은 날! 야외 일정 다 몰아넣었어요. 다 차로 5~20분이라 할머니도 편하게.</div>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 조식 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">08:30</span><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="meal-card morning">
+          <div class="meal-badge morning">☀️ 아침</div>
+          <div class="meal-name">간단 조식 후 출발 준비</div>
+          <div class="meal-desc">전날 시장에서 산 재료로 간단히! 더위 전에 수국 보러 가야 하니 가볍게 챙겨 먹고 출발 🚗</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 마노르블랑 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">10:00</span><div class="tl-dot" style="background:var(--purple)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card" style="border-left:4px solid var(--purple)" data-query="제주 마노르블랑 수국">
+          <div class="card-name">마노르블랑 수국 🌺</div>
+          <div class="card-desc">할머니가 보고싶어 하신 수국! 산방산+바다 뷰. 음료 주문 = 입장료. 더위 전 오전이 좋아요</div>
+          <div class="card-bottom">
+            <div class="tags"><span class="tag tag-purple">할머니 ❤️</span></div>
+            <div class="btn-row">
+              <a class="act-btn btn-call" href="tel:+82647940999">전화</a>
+              <a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EB%A7%88%EB%85%B8%EB%A5%B4%EB%B8%94%EB%9E%91" target="_blank">지도</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 점심 택1 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">12:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="pick-wrap">
+          <div class="pick-label-row"><div class="meal-badge lunch">🍚 점심 — 골라요!</div></div>
+          <div class="pick-options">
+            <div class="pick-opt" data-query="제주 덕성식당 갈치 사계리">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-1">1</span>
+                <div style="flex:1">
+                  <div class="meal-name">덕성식당</div>
+                  <div class="meal-desc">갈치구이·조림, 전복죽. 뼈 발라주는 갈치, 가성비 ⭐</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-call" href="tel:+82647949707">전화</a><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EB%8D%95%EC%84%B1%EC%8B%9D%EB%8B%B9%20%EC%82%AC%EA%B3%84%EB%A6%AC" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 고은물식당 화순">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-2">2</span>
+                <div style="flex:1">
+                  <div class="meal-name">고은물식당</div>
+                  <div class="meal-desc">생선구이+불고기 정식. 1인 정식 푸짐, 숙소 코앞</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EA%B3%A0%EC%9D%80%EB%AC%BC%EC%8B%9D%EB%8B%B9%20%ED%99%94%EC%88%9C" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 일품순두부 화순">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-3">3</span>
+                <div style="flex:1">
+                  <div class="meal-name">일품순두부 화순점</div>
+                  <div class="meal-desc">순두부·돌솥, 만원대. 부드러워 어르신 굿</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-call" href="tel:+82647941608">전화</a><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%9D%BC%ED%92%88%EC%88%9C%EB%91%90%EB%B6%80%20%ED%99%94%EC%88%9C%EC%A0%90" target="_blank">지도</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 오설록 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">13:30</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card" style="border-left:4px solid var(--green)" data-query="제주 오설록 티뮤지엄 녹차밭">
+          <div class="card-name">오설록 티뮤지엄 🍵</div>
+          <div class="card-desc">2시간 푹! 녹차밭 산책 + 티하우스 차·아이스크림 + 이니스프리 제주하우스까지. 평탄해서 산책 편해요</div>
+          <div class="card-bottom">
+            <div class="tags"><span class="tag tag-green">입장무료</span><span class="tag tag-gray">~19시</span></div>
+            <div class="btn-row">
+              <a class="act-btn btn-call" href="tel:+82647945312">전화</a>
+              <a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%98%A4%EC%84%A4%EB%A1%9D%20%ED%8B%B0%EB%AE%A4%EC%A7%80%EC%97%84" target="_blank">지도</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 화순해변 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">16:00</span><div class="tl-dot" style="background:var(--teal)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card" data-query="제주 화순금모래해변">
+          <div class="card-name">화순금모래해변 + 풀빌라 수영장 🌊🏊</div>
+          <div class="card-desc">숙소 도보 2~3분! 발 담그고 산책. 더운 낮엔 풀빌라 미온수 수영장(~21시)도 이때 즐기기 좋아요</div>
+          <div class="card-bottom">
+            <div class="tags"><span class="tag tag-teal">숙소 앞</span></div>
+            <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%ED%99%94%EC%88%9C%EA%B8%88%EB%AA%A8%EB%9E%98%ED%95%B4%EB%B3%80" target="_blank">지도</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 저녁 택1 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">18:00</span><div class="tl-dot" style="background:var(--coral)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="pick-wrap">
+          <div class="pick-label-row"><div class="meal-badge dinner">🌙 저녁 — 골라요!</div></div>
+          <div class="pick-options">
+            <div class="pick-opt" data-query="제주 팔미돈가 흑돼지 산방산">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-1">1</span>
+                <div style="flex:1">
+                  <div class="meal-name">팔미돈가 산방산본점</div>
+                  <div class="meal-desc">흑돼지(구워줌). 높은 의자·식기 완비, 가족 친화 ⭐</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-call" href="tel:+827045484244">전화</a><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%ED%8C%94%EB%AF%B8%EB%8F%88%EA%B0%80%20%EC%82%B0%EB%B0%A9%EC%82%B0%EB%B3%B8%EC%A0%90" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 돈벨롱 흑돼지 바다뷰">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-2">2</span>
+                <div style="flex:1">
+                  <div class="meal-name">돈벨롱</div>
+                  <div class="meal-desc">흑돼지(구워줌), 바다뷰. 사장님 친절·영어OK</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-call" href="tel:+82647923727">전화</a><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EB%8F%88%EB%B2%A8%EB%A1%B1%20%EC%A0%9C%EC%A3%BC%20%EC%95%88%EB%8D%95" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 제주바다 고등어구이 모슬포">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-3">3</span>
+                <div style="flex:1">
+                  <div class="meal-name">제주바다 (모슬포)</div>
+                  <div class="meal-desc">고등어구이·회. 회 땡기면 여기, 숙소서 15분</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-call" href="tel:+82647923883">전화</a><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%A0%9C%EC%A3%BC%EB%B0%94%EB%8B%A4%20%EB%AA%A8%EC%8A%AC%ED%8F%AC" target="_blank">지도</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 온천 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">20:00</span><div class="tl-dot" style="background:var(--teal)"></div></div>
+      <div class="tl-body">
+        <div class="card" style="border-left:4px solid var(--teal)" data-query="제주 산방산 탄산온천 야간">
+          <div class="card-name">산방산 탄산온천 (야간) ♨️</div>
+          <div class="card-desc">숙소 5~10분! 노천탕 22시까지. 산방산 보며 별빛 온천. 탄산온천이라 할머니 혈액순환에도 좋아요</div>
+          <div class="card-bottom">
+            <div class="tags"><span class="tag tag-teal">네이버예약 할인</span></div>
+            <div class="btn-row">
+              <a class="act-btn btn-call" href="tel:+82647928300">전화</a>
+              <a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%82%B0%EB%B0%A9%EC%82%B0%ED%83%84%EC%82%B0%EC%98%A8%EC%B2%9C" target="_blank">지도</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DAY 2 지도 -->
+  <div class="section-label">오늘의 경로</div>
+  <div class="map-route-card">
+    <div class="map-stops">
+      <div class="map-stop"><span class="stop-num" style="background:var(--green)">1</span><span class="stop-name">마노르블랑</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--green)">2</span><span class="stop-name">점심(사계)</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--green)">3</span><span class="stop-name">오설록</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--green)">4</span><span class="stop-name">화순해변</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--green)">5</span><span class="stop-name">산방산온천</span></div>
+    </div>
+    <a class="map-route-btn" href="https://www.google.com/maps/dir/%EB%A7%88%EB%85%B8%EB%A5%B4%EB%B8%94%EB%9E%91/%EB%8D%95%EC%84%B1%EC%8B%9D%EB%8B%B9%20%EC%82%AC%EA%B3%84%EB%A6%AC/%EC%98%A4%EC%84%A4%EB%A1%9D%20%ED%8B%B0%EB%AE%A4%EC%A7%80%EC%97%84/%ED%99%94%EC%88%9C%EA%B8%88%EB%AA%A8%EB%9E%98%ED%95%B4%EB%B3%80/%EC%82%B0%EB%B0%A9%EC%82%B0%ED%83%84%EC%82%B0%EC%98%A8%EC%B2%9C" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      구글맵에서 전체 경로 보기
+    </a>
+  </div>
+</div>
+
+<!-- ════════════ DAY 3 ════════════ -->
+<div id="d3" class="panel">
+  <div class="day-hero">
+    <div class="day-hero-row">
+      <div>
+        <div class="day-hero-label" style="color:var(--coral)">DAY 3 · 7월 3일 금</div>
+        <div class="day-hero-title">마지막 카페, 그리고 집으로</div>
+        <div class="day-hero-sub">체크아웃 → 카페 → 점심 → 공항</div>
+      </div>
+      <span class="weather-chip w-rain">☔ 오전 비</span>
+    </div>
+  </div>
+
+  <div class="notice rain">
+    <span class="notice-icon">⏰</span>
+    <div class="notice-text">17:20 비행기! 공항까지 1시간이라 <b>늦어도 14:30엔 출발</b>해야 안전해요. 카페·점심은 그 전에 마무리!</div>
+  </div>
+
+  <div class="timeline">
+
+    <!-- 체크아웃 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">~11:00</span><div class="tl-dot" style="background:var(--coral)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card">
+          <div class="card-name">숙소 체크아웃</div>
+          <div class="card-desc">짐 정리, 풀빌라에서 마지막 인사 👋</div>
+          <div class="card-bottom"><div class="tags"><span class="tag tag-gray">~11시</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 카페 택1 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">11:00</span><div class="tl-dot" style="background:var(--teal)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="pick-wrap">
+          <div class="pick-label-row"><div class="meal-badge cafe">☕ 마지막 카페 — 골라요! (비 와도 실내 감성)</div></div>
+          <div class="pick-options">
+            <div class="pick-opt" data-query="제주 카페루치아 대평 절벽뷰">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-1">1</span>
+                <div style="flex:1">
+                  <div class="meal-name">Cafe Lucia</div>
+                  <div class="meal-desc">대평 절벽·바다뷰 + 큰 정원, 베이커리 ⭐</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-call" href="tel:+82647388879">전화</a><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%B9%B4%ED%8E%98%EB%A3%A8%EC%B9%98%EC%95%84%20%EC%A0%9C%EC%A3%BC" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 도도카페 창천 소금빵">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-2">2</span>
+                <div style="flex:1">
+                  <div class="meal-name">DODO CAFE</div>
+                  <div class="meal-desc">우드톤 브런치, 갓 구운 소금빵 (느좋 끝판왕)</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EB%8F%84%EB%8F%84%EC%B9%B4%ED%8E%98%20%EC%A0%9C%EC%A3%BC%20%EC%B0%BD%EC%B2%9C" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 소색채본 카페 사계 유채">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-3">3</span>
+                <div style="flex:1">
+                  <div class="meal-name">소색채본</div>
+                  <div class="meal-desc">유채밭+바다+산방산 한 컷, 빵 맛집</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%86%8C%EC%83%89%EC%B1%84%EB%B3%B8%20%EC%A0%9C%EC%A3%BC" target="_blank">지도</a></div>
+              </div>
+            </div>
+            <div class="pick-opt" data-query="제주 원앤온리 카페 산방산">
+              <div class="pick-opt-top">
+                <span class="opt-badge opt-1" style="background:var(--teal)">4</span>
+                <div style="flex:1">
+                  <div class="meal-name">ONE AND ONLY</div>
+                  <div class="meal-desc">산방산+바다 대형 뷰, 리뷰 3,000+개. 마지막 추억샷 명소 🌊</div>
+                </div>
+                <div class="btn-row"><a class="act-btn btn-call" href="tel:+82647940117">전화</a><a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=ONE%20AND%20ONLY%20%EC%A0%9C%EC%A3%BC%20%EC%82%B0%EB%B0%A9%EC%82%B0" target="_blank">지도</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 점심 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">13:00</span><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="meal-card snack">
+          <div class="meal-badge lunch">🍚 점심</div>
+          <div class="meal-name">공항 방향에서 가볍게</div>
+          <div class="meal-desc">전날 못 가본 맛집 or 공항 가는 길에 자유롭게. 너무 늦지 않게!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 출발 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">14:30</span><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-line"></div></div>
+      <div class="tl-body">
+        <div class="card" style="border-left:4px solid var(--red)">
+          <div class="card-name">공항으로 출발 🚗</div>
+          <div class="card-desc">안덕 → 공항 약 1시간. 렌터카 반납 시간도 고려!</div>
+          <div class="card-bottom"><div class="tags"><span class="tag tag-red">14:30 출발 엄수</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 도착 -->
+    <div class="tl-row">
+      <div class="tl-axis"><span class="tl-time">17:20</span><div class="tl-dot" style="background:var(--coral)"></div></div>
+      <div class="tl-body">
+        <div class="card">
+          <div class="card-name">제주공항 출발 ✈️</div>
+          <div class="card-desc">아시아나 OZ8964 · 제주 17:20 → 김포 18:35 · 4명</div>
+          <div class="card-bottom"><div class="tags"><span class="tag tag-blue">FJEEFC</span><span class="tag tag-blue">DQ9DBZ</span></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DAY 3 지도 -->
+  <div class="section-label">오늘의 경로</div>
+  <div class="map-route-card">
+    <div class="map-stops">
+      <div class="map-stop"><span class="stop-num" style="background:var(--coral)">1</span><span class="stop-name">숙소</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--coral)">2</span><span class="stop-name">대평 카페</span></div>
+      <div class="map-stop"><span class="stop-num" style="background:var(--coral)">3</span><span class="stop-name">제주공항</span></div>
+    </div>
+    <a class="map-route-btn" href="https://www.google.com/maps/dir/%EC%98%A4%EC%85%98%EB%B8%8C%EB%A6%AD%20%ED%92%80%EB%B9%8C%EB%9D%BC/%EC%B9%B4%ED%8E%98%EB%A3%A8%EC%B9%98%EC%95%84%20%EC%A0%9C%EC%A3%BC/%EC%A0%9C%EC%A3%BC%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      구글맵에서 전체 경로 보기
+    </a>
+  </div>
+</div>
+
+<!-- ════════════ INFO ════════════ -->
+<div id="info" class="panel">
+
+  <div class="family-banner">
+    <div class="fb-emoji">👵👩🧑👦</div>
+    <div class="fb-text"><span class="fb-names">용순 · 현주 · 재웅 · 원준</span><br>온 가족이 함께하는 제주 2박 3일 ❤️</div>
+  </div>
+
+  <div class="section-label">항공편</div>
+  <div class="flight-card">
+    <div class="flight-icon">🛫</div>
+    <div class="flight-main">
+      <div class="flight-route">김포 10:30 → 제주 11:45</div>
+      <div class="flight-detail">진에어 LJ507 · 7월 1일 · 4명</div>
+    </div>
+    <span class="flight-pnr">DCJ2FF</span>
+  </div>
+  <div class="flight-card">
+    <div class="flight-icon">🛬</div>
+    <div class="flight-main">
+      <div class="flight-route">제주 17:20 → 김포 18:35</div>
+      <div class="flight-detail">아시아나 OZ8964 · 7월 3일 · 4명</div>
+    </div>
+    <span class="flight-pnr">FJEEFC<br>DQ9DBZ</span>
+  </div>
+
+  <div class="section-label">숙소</div>
+  <div class="info-card">
+    <div class="info-title">오션브릭 풀빌라 🏡</div>
+    <div class="info-body">
+      서귀포시 안덕면 산방로 75-3<br>
+      산방산 앞 · 화순금모래해변 도보 2~3분<br>
+      📞 064-792-4100<br>
+      <span style="color:var(--text-tertiary)">미온수 수영장 무료(12~21시) · 바베큐 가능</span>
+    </div>
+    <div class="card-bottom" style="margin-top:12px">
+      <div class="btn-row">
+        <a class="act-btn btn-call" href="tel:+82647924100">전화걸기</a>
+        <a class="act-btn btn-map" href="https://www.google.com/maps/search/?api=1&query=%EC%98%A4%EC%85%98%EB%B8%8C%EB%A6%AD%20%ED%92%80%EB%B9%8C%EB%9D%BC" target="_blank">지도열기</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">출발 전 체크리스트</div>
+  <div class="check-list">
+    <div class="check-item done" onclick="this.classList.toggle('done')">
+      <div class="check-circle"></div>
+      <div><div class="check-text">아트서커스 예매</div><div class="check-sub">17:00 막공 · 완료 ✓</div></div>
+    </div>
+    <div class="check-item" onclick="this.classList.toggle('done')">
+      <div class="check-circle"></div>
+      <div><div class="check-text">진에어 좌석 선택</div><div class="check-sub">출발 24시간 전(6/30)부터 가능 · 4명</div></div>
+    </div>
+    <div class="check-item" onclick="this.classList.toggle('done')">
+      <div class="check-circle"></div>
+      <div><div class="check-text">산방산 탄산온천 네이버 예약</div><div class="check-sub">성인 9,800원대 할인</div></div>
+    </div>
+    <div class="check-item" onclick="this.classList.toggle('done')">
+      <div class="check-circle"></div>
+      <div><div class="check-text">마노르블랑 수국 상태 확인</div><div class="check-sub">인스타 @manorblanc</div></div>
+    </div>
+    <div class="check-item" onclick="this.classList.toggle('done')">
+      <div class="check-circle"></div>
+      <div><div class="check-text">우산 · 우비 챙기기</div><div class="check-sub">수·금 비 예보 ☔</div></div>
+    </div>
+    <div class="check-item" onclick="this.classList.toggle('done')">
+      <div class="check-circle"></div>
+      <div><div class="check-text">할머니 약 · 모자 · 편한 신발</div><div class="check-sub">햇빛·걷기 대비 👵</div></div>
+    </div>
+    <div class="check-item" onclick="this.classList.toggle('done')">
+      <div class="check-circle"></div>
+      <div><div class="check-text">현금 챙기기</div><div class="check-sub">동문시장 먹거리·장보기용</div></div>
+    </div>
+  </div>
+
+  <div class="section-label">알아두면 좋은 꿀팁</div>
+  <div class="info-card teal">
+    <div class="info-title">🚗 거리 체크</div>
+    <div class="info-body">Day 2는 전부 차로 5~20분! 가장 여유로워요. Day 1·3은 공항↔안덕이 약 1시간이니 그것만 신경 쓰면 돼요.</div>
+  </div>
+  <div class="info-card gold">
+    <div class="info-title">🍵 오설록은 2시간 푹</div>
+    <div class="info-body">녹차밭 + 티하우스 + 이니스프리 제주하우스까지. 카페·디저트 다 여기서 즐기니 따로 카페 안 가도 돼요.</div>
+  </div>
+  <div class="info-card coral">
+    <div class="info-title">🌺 목요일 휴무 주의</div>
+    <div class="info-body">순천미향(문어해물탕)·화순한가네는 목요일 쉬어요. 안덕 데이가 목요일이라 후보에서 뺐어요!</div>
+  </div>
+  <div class="info-card green">
+    <div class="info-title">♨️ 온천 팁</div>
+    <div class="info-body">노천탕은 수영복 필요(현장 대여 가능). 네이버 예약하면 할인되니 미리!</div>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button class="nav-item active" onclick="go('d1')">
+    <span class="nav-icon">🛬</span><span class="nav-label">7/1 수</span>
+  </button>
+  <button class="nav-item" onclick="go('d2')">
+    <span class="nav-icon">🌺</span><span class="nav-label">7/2 목</span>
+  </button>
+  <button class="nav-item" onclick="go('d3')">
+    <span class="nav-icon">✈️</span><span class="nav-label">7/3 금</span>
+  </button>
+  <button class="nav-item" onclick="go('info')">
+    <span class="nav-icon">📋</span><span class="nav-label">정보</span>
+  </button>
+</div>
+
+<script>
+  const API_BASE = 'https://seoul-random-date.vercel.app/api/images';
+  const imgCache = {};
+
+  async function loadImages(card) {
+    const query = card.dataset.query;
+    if (!query || card.dataset.loaded) return;
+    card.dataset.loaded = 'true';
+
+    const strip = document.createElement('div');
+    strip.className = 'img-strip';
+    strip.innerHTML = `
+      <div class="img-strip-item"><div class="img-skeleton"></div></div>
+      <div class="img-strip-item"><div class="img-skeleton"></div></div>
+      <div class="img-strip-item"><div class="img-skeleton"></div></div>`;
+    card.appendChild(strip);
+
+    try {
+      let items = imgCache[query];
+      if (!items) {
+        const res = await fetch(`${API_BASE}?query=${encodeURIComponent(query)}`);
+        items = await res.json();
+        imgCache[query] = items;
+      }
+      strip.innerHTML = '';
+      items.slice(0, 3).forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'img-strip-item';
+        const img = document.createElement('img');
+        img.src = item.thumbnail || item.link;
+        img.alt = query;
+        img.loading = 'lazy';
+        img.onerror = () => div.remove();
+        div.appendChild(img);
+        strip.appendChild(div);
+      });
+      if (!strip.children.length) strip.remove();
+    } catch(e) { strip.remove(); }
+  }
+
+  function loadPanelImages(panelId) {
+    document.getElementById(panelId)
+      ?.querySelectorAll('[data-query]')
+      .forEach(card => loadImages(card));
+  }
+
+  const panels   = document.querySelectorAll('.panel');
+  const tabs      = document.querySelectorAll('.tab');
+  const navItems = document.querySelectorAll('.nav-item');
+  const idxMap   = {d1:0, d2:1, d3:2, info:3};
+
+  function go(id) {
+    panels.forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    tabs.forEach(t => t.classList.remove('active'));
+    tabs[idxMap[id]].classList.add('active');
+    navItems.forEach(n => n.classList.remove('active'));
+    navItems[idxMap[id]].classList.add('active');
+    window.scrollTo(0, 0);
+    loadPanelImages(id);
+  }
+
+  window.addEventListener('DOMContentLoaded', () => loadPanelImages('d1'));
+</script>
+</body>
+</html>
